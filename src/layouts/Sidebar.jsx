@@ -63,7 +63,7 @@ export default function Sidebar({ collapsed, mobileOpen, closeMobile }) {
                   {APP_NAME}
                 </p>
                 <p className="text-caption text-erp-muted dark:text-erp-dark-text whitespace-nowrap">
-                  School Management
+                  Student Portal
                 </p>
               </motion.div>
             )}
