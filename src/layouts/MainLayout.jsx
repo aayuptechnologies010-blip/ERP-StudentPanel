@@ -48,7 +48,7 @@ export function AuthLayout({ children }) {
         <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-secondary/5 rounded-full blur-3xl" />
       </div>
       <div className="relative z-10 w-full max-w-md">
-        {children}
+        <Outlet />
       </div>
     </div>
   );
