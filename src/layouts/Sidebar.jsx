@@ -80,16 +80,27 @@ export default function Sidebar({ collapsed, mobileOpen, closeMobile }) {
         </div>
 
         {/* Navigation */}
-        <nav className="flex-1 overflow-y-auto no-scrollbar px-3 py-4 space-y-0.5">
-          {SIDEBAR_MENU.map((item) => (
-            <SidebarItem
-              key={item.id}
-              item={item}
-              collapsed={collapsed}
-              expanded={expandedItems.includes(item.id)}
-              onToggle={() => toggleExpand(item.id)}
-              closeMobile={closeMobile}
-            />
+        <nav className="flex-1 overflow-y-auto no-scrollbar px-3 py-4 space-y-4">
+          {SIDEBAR_MENU.map((group) => (
+            <div key={group.title}>
+              {!collapsed && (
+                <p className="px-3 mb-2 text-xs font-bold uppercase tracking-wider text-erp-muted dark:text-erp-dark-text opacity-70">
+                  {group.title}
+                </p>
+              )}
+              <div className="space-y-0.5">
+                {group.items.map((item) => (
+                  <SidebarItem
+                    key={item.id}
+                    item={item}
+                    collapsed={collapsed}
+                    expanded={expandedItems.includes(item.id)}
+                    onToggle={() => toggleExpand(item.id)}
+                    closeMobile={closeMobile}
+                  />
+                ))}
+              </div>
+            </div>
           ))}
         </nav>
 
@@ -97,7 +108,7 @@ export default function Sidebar({ collapsed, mobileOpen, closeMobile }) {
         <div className="flex-shrink-0 px-3 py-4 border-t border-erp-border dark:border-erp-dark-border">
           <div className={`flex items-center gap-3 px-3 py-2.5 ${collapsed ? 'justify-center' : ''}`}>
             <div className="w-8 h-8 rounded-full gradient-primary flex items-center justify-center flex-shrink-0">
-              <span className="text-white text-xs font-bold">A</span>
+              <span className="text-white text-xs font-bold">S</span>
             </div>
             <AnimatePresence>
               {!collapsed && (
@@ -108,10 +119,10 @@ export default function Sidebar({ collapsed, mobileOpen, closeMobile }) {
                   className="overflow-hidden"
                 >
                   <p className="text-sm font-semibold text-erp-heading dark:text-erp-dark-heading whitespace-nowrap leading-tight">
-                    Admin User
+                    Student User
                   </p>
                   <p className="text-caption text-erp-muted dark:text-erp-dark-text whitespace-nowrap">
-                    Administrator
+                    Student
                   </p>
                 </motion.div>
               )}
