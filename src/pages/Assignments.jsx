@@ -2,26 +2,49 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { PageHeader } from '../components/common/PageHeader';
 import { APP_NAME } from '../constants';
+import { Badge, Button } from '../components/ui';
 
 export default function Assignments() {
+  const data = [
+    { title: 'Physics Practical Record', due: '2023-10-20', status: 'Pending', marks: '-' },
+    { title: 'History Essay', due: '2023-10-05', status: 'Graded', marks: '18/20' },
+  ];
   return (
     <>
       <Helmet><title>Assignments — Student Portal | {APP_NAME}</title></Helmet>
       <PageHeader
         title="Assignments"
-        subtitle="View your assignments details and records."
+        subtitle="Submit and track major assignments and projects."
       />
       <div className="card p-6">
-        <div className="flex flex-col items-center justify-center py-12 text-center">
-          <div className="w-16 h-16 bg-primary/10 text-primary rounded-full flex items-center justify-center mb-4">
-            <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-            </svg>
-          </div>
-          <h3 className="text-lg font-semibold text-erp-heading dark:text-erp-dark-heading mb-2">No data found</h3>
-          <p className="text-erp-muted dark:text-erp-dark-text max-w-sm">
-            We couldn't find any data for Assignments at this moment. Please check back later or contact your school administration.
-          </p>
+        <div className="overflow-x-auto">
+          <table className="erp-table">
+            <thead>
+              <tr>
+                <th>Assignment Title</th>
+                <th>Due Date</th>
+                <th>Status</th>
+                <th>Marks Obtained</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {data.map((row, i) => (
+                <tr key={i}>
+                  <td className="font-medium">{row.title}</td>
+                  <td>{row.due}</td>
+                  <td>
+                    {row.status === 'Pending' && <Badge variant="warning">Pending</Badge>}
+                    {row.status === 'Graded' && <Badge variant="success">Graded</Badge>}
+                  </td>
+                  <td className="font-bold">{row.marks}</td>
+                  <td>
+                    {row.status === 'Pending' ? <Button size="sm">Submit</Button> : <Button variant="outline" size="sm">View</Button>}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
     </>

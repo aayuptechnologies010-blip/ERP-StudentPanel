@@ -8,21 +8,60 @@ export default function Timetable() {
     <>
       <Helmet><title>Timetable — Student Portal | {APP_NAME}</title></Helmet>
       <PageHeader
-        title="Timetable"
-        subtitle="View your timetable details and records."
+        title="Class Timetable"
+        subtitle="View your weekly class schedule."
       />
-      <div className="card p-6">
-        <div className="flex flex-col items-center justify-center py-12 text-center">
-          <div className="w-16 h-16 bg-primary/10 text-primary rounded-full flex items-center justify-center mb-4">
-            <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-            </svg>
-          </div>
-          <h3 className="text-lg font-semibold text-erp-heading dark:text-erp-dark-heading mb-2">No data found</h3>
-          <p className="text-erp-muted dark:text-erp-dark-text max-w-sm">
-            We couldn't find any data for Timetable at this moment. Please check back later or contact your school administration.
-          </p>
-        </div>
+      <div className="card p-6 overflow-x-auto">
+        <table className="erp-table min-w-[800px]">
+          <thead>
+            <tr>
+              <th>Time</th>
+              <th>Monday</th>
+              <th>Tuesday</th>
+              <th>Wednesday</th>
+              <th>Thursday</th>
+              <th>Friday</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td className="font-bold">08:00 AM</td>
+              <td>Math</td>
+              <td>Physics</td>
+              <td>Chemistry</td>
+              <td>English</td>
+              <td>PE</td>
+            </tr>
+            <tr>
+              <td className="font-bold">09:00 AM</td>
+              <td>Physics</td>
+              <td>Math</td>
+              <td>Computer</td>
+              <td>Physics</td>
+              <td>Math</td>
+            </tr>
+            <tr>
+              <td className="font-bold">10:00 AM</td>
+              <td>Chemistry</td>
+              <td>Computer</td>
+              <td>English</td>
+              <td>Chemistry</td>
+              <td>Library</td>
+            </tr>
+            <tr>
+              <td className="font-bold text-erp-muted">11:00 AM</td>
+              <td colSpan="5" className="text-center font-semibold bg-gray-50 text-gray-400">RECESS</td>
+            </tr>
+            <tr>
+              <td className="font-bold">11:30 AM</td>
+              <td>English</td>
+              <td>Chemistry</td>
+              <td>Math</td>
+              <td>Computer</td>
+              <td>Physics</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </>
   );

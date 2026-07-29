@@ -4,24 +4,49 @@ import { PageHeader } from '../components/common/PageHeader';
 import { APP_NAME } from '../constants';
 
 export default function Results() {
+  const data = [
+    { subject: 'Mathematics', total: 100, obtained: 92, grade: 'A+' },
+    { subject: 'Physics', total: 100, obtained: 88, grade: 'A' },
+    { subject: 'Chemistry', total: 100, obtained: 85, grade: 'A' },
+    { subject: 'English', total: 100, obtained: 78, grade: 'B+' },
+    { subject: 'Computer Science', total: 100, obtained: 95, grade: 'A+' },
+  ];
   return (
     <>
       <Helmet><title>Results — Student Portal | {APP_NAME}</title></Helmet>
       <PageHeader
-        title="Results"
-        subtitle="View your results details and records."
+        title="Examination Results"
+        subtitle="View your mark sheets and academic progress."
       />
       <div className="card p-6">
-        <div className="flex flex-col items-center justify-center py-12 text-center">
-          <div className="w-16 h-16 bg-primary/10 text-primary rounded-full flex items-center justify-center mb-4">
-            <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-            </svg>
+        <div className="flex justify-between items-center mb-6">
+          <h3 className="section-title">Mid-Term Examination 2023</h3>
+          <div className="text-right">
+            <p className="text-sm text-erp-muted">Overall Percentage</p>
+            <p className="text-2xl font-bold text-success-600">87.6%</p>
           </div>
-          <h3 className="text-lg font-semibold text-erp-heading dark:text-erp-dark-heading mb-2">No data found</h3>
-          <p className="text-erp-muted dark:text-erp-dark-text max-w-sm">
-            We couldn't find any data for Results at this moment. Please check back later or contact your school administration.
-          </p>
+        </div>
+        <div className="overflow-x-auto">
+          <table className="erp-table">
+            <thead>
+              <tr>
+                <th>Subject</th>
+                <th>Total Marks</th>
+                <th>Marks Obtained</th>
+                <th>Grade</th>
+              </tr>
+            </thead>
+            <tbody>
+              {data.map((row, i) => (
+                <tr key={i}>
+                  <td className="font-medium">{row.subject}</td>
+                  <td>{row.total}</td>
+                  <td className="font-bold">{row.obtained}</td>
+                  <td className="font-bold text-primary">{row.grade}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
     </>

@@ -4,25 +4,26 @@ import { PageHeader } from '../components/common/PageHeader';
 import { APP_NAME } from '../constants';
 
 export default function Events() {
+  const events = [
+    { date: '25 Oct 2023', title: 'Annual Sports Day', venue: 'Main Ground' },
+    { date: '14 Nov 2023', title: 'Childrens Day Celebration', venue: 'Auditorium' },
+    { date: '22 Dec 2023', title: 'Winter Carnival', venue: 'School Campus' },
+  ];
   return (
     <>
       <Helmet><title>Events — Student Portal | {APP_NAME}</title></Helmet>
       <PageHeader
-        title="Events"
-        subtitle="View your events details and records."
+        title="School Events"
+        subtitle="Upcoming events and activities."
       />
-      <div className="card p-6">
-        <div className="flex flex-col items-center justify-center py-12 text-center">
-          <div className="w-16 h-16 bg-primary/10 text-primary rounded-full flex items-center justify-center mb-4">
-            <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-            </svg>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {events.map((e, i) => (
+          <div key={i} className="card p-6 border-t-4 border-t-secondary">
+            <h3 className="text-lg font-bold text-erp-heading mb-1">{e.title}</h3>
+            <p className="text-sm font-semibold text-secondary mb-3">{e.date}</p>
+            <p className="text-sm text-erp-muted">Venue: {e.venue}</p>
           </div>
-          <h3 className="text-lg font-semibold text-erp-heading dark:text-erp-dark-heading mb-2">No data found</h3>
-          <p className="text-erp-muted dark:text-erp-dark-text max-w-sm">
-            We couldn't find any data for Events at this moment. Please check back later or contact your school administration.
-          </p>
-        </div>
+        ))}
       </div>
     </>
   );

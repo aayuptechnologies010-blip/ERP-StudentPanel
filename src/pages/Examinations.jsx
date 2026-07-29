@@ -2,26 +2,44 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { PageHeader } from '../components/common/PageHeader';
 import { APP_NAME } from '../constants';
+import { Badge } from '../components/ui';
 
 export default function Examinations() {
+  const data = [
+    { subject: 'Mathematics', date: '2023-11-01', time: '10:00 AM - 01:00 PM', room: 'Hall A' },
+    { subject: 'Physics', date: '2023-11-03', time: '10:00 AM - 01:00 PM', room: 'Hall A' },
+    { subject: 'Chemistry', date: '2023-11-05', time: '10:00 AM - 01:00 PM', room: 'Hall B' },
+  ];
   return (
     <>
       <Helmet><title>Examinations — Student Portal | {APP_NAME}</title></Helmet>
       <PageHeader
-        title="Examinations"
-        subtitle="View your examinations details and records."
+        title="Examinations Schedule"
+        subtitle="View upcoming examination dates and venues."
       />
       <div className="card p-6">
-        <div className="flex flex-col items-center justify-center py-12 text-center">
-          <div className="w-16 h-16 bg-primary/10 text-primary rounded-full flex items-center justify-center mb-4">
-            <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-            </svg>
-          </div>
-          <h3 className="text-lg font-semibold text-erp-heading dark:text-erp-dark-heading mb-2">No data found</h3>
-          <p className="text-erp-muted dark:text-erp-dark-text max-w-sm">
-            We couldn't find any data for Examinations at this moment. Please check back later or contact your school administration.
-          </p>
+        <h3 className="section-title mb-4">Term 1 Final Exams</h3>
+        <div className="overflow-x-auto">
+          <table className="erp-table">
+            <thead>
+              <tr>
+                <th>Subject</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Room</th>
+              </tr>
+            </thead>
+            <tbody>
+              {data.map((row, i) => (
+                <tr key={i}>
+                  <td className="font-medium text-erp-heading">{row.subject}</td>
+                  <td>{row.date}</td>
+                  <td>{row.time}</td>
+                  <td><Badge variant="primary">{row.room}</Badge></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
     </>

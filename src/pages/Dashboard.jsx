@@ -2,6 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { PageHeader } from '../components/common/PageHeader';
 import { APP_NAME } from '../constants';
+import { HiOutlineAcademicCap, HiOutlineCalendar, HiOutlineClipboardCheck, HiOutlineCurrencyRupee } from 'react-icons/hi';
 
 export default function Dashboard() {
   return (
@@ -9,19 +10,102 @@ export default function Dashboard() {
       <Helmet><title>Dashboard — Student Portal | {APP_NAME}</title></Helmet>
       <PageHeader
         title="Dashboard"
-        subtitle="View your dashboard details and records."
+        subtitle="Welcome back, Student! Here's what's happening today."
       />
-      <div className="card p-6">
-        <div className="flex flex-col items-center justify-center py-12 text-center">
-          <div className="w-16 h-16 bg-primary/10 text-primary rounded-full flex items-center justify-center mb-4">
-            <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-            </svg>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div className="stat-card flex items-center gap-4 border-l-4 border-primary">
+          <div className="w-12 h-12 rounded-full bg-primary-50 text-primary flex items-center justify-center">
+            <HiOutlineClipboardCheck className="w-6 h-6" />
           </div>
-          <h3 className="text-lg font-semibold text-erp-heading dark:text-erp-dark-heading mb-2">No data found</h3>
-          <p className="text-erp-muted dark:text-erp-dark-text max-w-sm">
-            We couldn't find any data for Dashboard at this moment. Please check back later or contact your school administration.
-          </p>
+          <div>
+            <p className="text-sm font-medium text-erp-muted">Overall Attendance</p>
+            <p className="text-h3 font-bold text-erp-heading">92.5%</p>
+          </div>
+        </div>
+        <div className="stat-card flex items-center gap-4 border-l-4 border-accent">
+          <div className="w-12 h-12 rounded-full bg-accent/10 text-accent flex items-center justify-center">
+            <HiOutlineAcademicCap className="w-6 h-6" />
+          </div>
+          <div>
+            <p className="text-sm font-medium text-erp-muted">Upcoming Exams</p>
+            <p className="text-h3 font-bold text-erp-heading">3</p>
+          </div>
+        </div>
+        <div className="stat-card flex items-center gap-4 border-l-4 border-danger">
+          <div className="w-12 h-12 rounded-full bg-danger/10 text-danger flex items-center justify-center">
+            <HiOutlineCurrencyRupee className="w-6 h-6" />
+          </div>
+          <div>
+            <p className="text-sm font-medium text-erp-muted">Pending Fees</p>
+            <p className="text-h3 font-bold text-erp-heading">₹12,500</p>
+          </div>
+        </div>
+        <div className="stat-card flex items-center gap-4 border-l-4 border-secondary">
+          <div className="w-12 h-12 rounded-full bg-secondary/10 text-secondary flex items-center justify-center">
+            <HiOutlineCalendar className="w-6 h-6" />
+          </div>
+          <div>
+            <p className="text-sm font-medium text-erp-muted">Events This Month</p>
+            <p className="text-h3 font-bold text-erp-heading">5</p>
+          </div>
+        </div>
+      </div>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="lg:col-span-2 card p-6">
+          <h3 className="section-title mb-4">Today's Timetable</h3>
+          <table className="erp-table">
+            <thead>
+              <tr>
+                <th>Time</th>
+                <th>Subject</th>
+                <th>Teacher</th>
+                <th>Room</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>08:00 AM</td>
+                <td>Mathematics</td>
+                <td>Mr. Sharma</td>
+                <td>Room 101</td>
+              </tr>
+              <tr>
+                <td>09:00 AM</td>
+                <td>Physics</td>
+                <td>Ms. Verma</td>
+                <td>Lab 2</td>
+              </tr>
+              <tr>
+                <td>10:00 AM</td>
+                <td>Chemistry</td>
+                <td>Dr. Singh</td>
+                <td>Lab 1</td>
+              </tr>
+              <tr>
+                <td>11:00 AM</td>
+                <td>Break</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div className="card p-6">
+          <h3 className="section-title mb-4">Recent Notices</h3>
+          <div className="space-y-4">
+            <div className="p-3 border rounded-xl border-erp-border">
+              <span className="text-xs text-primary font-bold">12 Oct 2023</span>
+              <p className="text-sm font-medium mt-1">Science Exhibition Registrations Open</p>
+            </div>
+            <div className="p-3 border rounded-xl border-erp-border">
+              <span className="text-xs text-primary font-bold">10 Oct 2023</span>
+              <p className="text-sm font-medium mt-1">Diwali Holidays Announcement</p>
+            </div>
+            <div className="p-3 border rounded-xl border-erp-border">
+              <span className="text-xs text-primary font-bold">05 Oct 2023</span>
+              <p className="text-sm font-medium mt-1">Mid-term Results Declared</p>
+            </div>
+          </div>
         </div>
       </div>
     </>
