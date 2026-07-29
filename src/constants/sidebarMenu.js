@@ -20,7 +20,7 @@ export const SIDEBAR_MENU = [
   {
     title: 'Main',
     items: [
-      { id: 'dashboard', label: 'Dashboard', icon: HiOutlineHome, path: '/' },
+      { id: 'dashboard', label: 'Dashboard', icon: HiOutlineHome, path: '/dashboard' },
       { id: 'profile', label: 'My Profile', icon: HiOutlineUser, path: '/profile' },
       { id: 'attendance', label: 'Attendance', icon: HiOutlineClipboardCheck, path: '/attendance' },
     ]

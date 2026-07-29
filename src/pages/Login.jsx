@@ -30,7 +30,7 @@ export default function Login() {
     try {
       await login(data);
       notify.success('Welcome back! Logged in successfully.');
-      navigate('/');
+      navigate('/dashboard');
     } catch (err) {
       notify.error(err.message || 'Login failed. Please try again.');
     }
